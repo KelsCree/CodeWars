@@ -1,10 +1,9 @@
 #Return "Hello, name!" unless no name, then return "Hello, World!"
 
-def hello(name)
+def hello(name = 'World')
     if name.length > 0
-      new_name = name.capitalize
-      return "Hello, #{new_name}!"
+      return "Hello, #{name.capitalize}!"
     else
-      return 'Hello, World!'  
+      return "Hello, World!"
     end
- end
+  end
