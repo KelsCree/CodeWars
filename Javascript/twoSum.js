@@ -29,3 +29,20 @@ var twoSum = function(nums, target) {
       }
   }
 }
+
+
+//hash solution
+
+var twoSum = function(nums, target) {
+  let hash = {}
+  for(i = 0; i <= nums.length; i++) {
+      var currentNumber = nums[i]
+      var requiredNumber = target - currentNumber
+      const index2 = hash[requiredNumber]
+      if (index2 != undefined) {
+          return [index2, i]
+      } else {
+          hash[currentNumber] = i
+      }
+  }
+}
