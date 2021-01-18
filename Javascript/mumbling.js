@@ -10,3 +10,12 @@
 function accum(s) {
   return [...s].map((char, index) => (char.toUpperCase() + char.toLowerCase().repeat(index))).join("-")
 }
+
+//longer solution
+function accum(s) {
+	let array = s.split('')
+  let newArray = array.map((char, index) => {
+    return char.toUpperCase() + char.toLowerCase().repeat(index)
+  })
+  return newArray.join("-")
+}
