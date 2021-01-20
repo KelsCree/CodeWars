@@ -13,14 +13,30 @@
 // Only the space character ' ' is considered a whitespace character.
 // Assume we are dealing with an environment that could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, 231 − 1 or −231 is returned.
 
-var myAtoi = function(s) {
-  let string = s.trim()
-  let array = []
-  let re = /[\d+-]/
-  if (!re.test(string[0])) return 0;
-  for (let i = 0; i < string.length; i++) {
-
+var myAtoi = function(str) {
+    
+  let i = 0;
+  let sign = 1;
+  let result = 0;
+  
+  while (i < str.length && str[i] == ' ') i++
+  
+  if (i < str.length && (str[i] == '+' || str[i] == '-')) {
+    sign = (str[i] == '-') ? -1 : 1;
+    i++
   }
-//     if (num > INT_MAX) return 
-//     if (num < INT_MIN) return 
-// };
+
+  const MAX_SAFE_32_INT = Math.pow(2,31) - 1
+  const MIN_SAFE_32_INT = -Math.pow(2,31)
+  
+  while (i < str.length && str[i].match(/[0-9]/) != null) {
+    if (result > Math.floor(MAX_SAFE_32_INT / 10) ||
+        (result === Math.floor(MAX_SAFE_32_INT / 10) && num > MAX_SAFE_32_INT % 10)) {
+          return (sign === 1) ? MAX_SAFE_32_INT : MIN_SAFE_32_INT;
+      }
+  
+    result = result * 10 + num;
+    i++
+  }
+  return result * sign;
+};
