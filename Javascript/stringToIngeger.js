@@ -30,6 +30,7 @@ var myAtoi = function(str) {
   const MIN_SAFE_32_INT = -Math.pow(2,31)
   
   while (i < str.length && str[i].match(/[0-9]/) != null) {
+    const num = str[i] - '0'
     if (result > Math.floor(MAX_SAFE_32_INT / 10) ||
         (result === Math.floor(MAX_SAFE_32_INT / 10) && num > MAX_SAFE_32_INT % 10)) {
           return (sign === 1) ? MAX_SAFE_32_INT : MIN_SAFE_32_INT;
